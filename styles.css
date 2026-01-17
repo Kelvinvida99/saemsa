@@ -491,7 +491,7 @@ footer {
 /* --- SECCIÓN DE LOGROS (ACHIEVEMENTS) --- */
 .achievements {
     /* Imagen de fondo relacionada con agua/industria */
-    background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-image: url('img/agricultura.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Efecto Parallax */
