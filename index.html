@@ -214,6 +214,49 @@
         </div>
     </section>
 
+    <section class="achievements">
+        <div class="achievements-overlay">
+            <div class="container">
+                <div class="achievements-grid">
+                    
+                    <div class="achievement-box">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <div class="counter-wrapper" data-target="8"><span class="counter" data-target="8">0</span></div>
+                        <p>Años de Trayectoria</p>
+                    </div>
+
+                    <div class="achievement-box">
+                        <i class="fa-solid fa-truck-droplet"></i>
+                        <div class="counter-wrapper">
+                            <span>+</span>
+                            <span class="counter" data-target="3500">0</span>
+                        </div>
+                        <p>Entregas Realizadas</p>
+                    </div>
+
+                    <div class="achievement-box">
+                        <i class="fa-solid fa-users"></i>
+                        <div class="counter-wrapper">
+                            <span>+</span>
+                            <span class="counter" data-target="500">0</span>
+                        </div>
+                        <p>Clientes Satisfechos</p>
+                    </div>
+
+                    <div class="achievement-box">
+                        <i class="fa-solid fa-medal"></i>
+                        <div class="counter-wrapper">
+                            <span class="counter" data-target="100">0</span>
+                            <span>%</span>
+                        </div>
+                        <p>Calidad Garantizada</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="nosotros" class="section-padding about">
         <div class="container about-content">
             <div class="about-text">
@@ -357,6 +400,44 @@
             });
         });
     });
+
+    /* --- ANIMACIÓN DE CONTADORES --- */
+    const counters = document.querySelectorAll('.counter');
+    let hasCounted = false; // Para que solo corra una vez
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const speed = 200; // Mientras más alto, más lento
+            
+            const updateCount = () => {
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 20); // Velocidad de refresco
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // Usar IntersectionObserver para activar cuando sea visible
+    const sectionObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !hasCounted) {
+            animateCounters();
+            hasCounted = true; // Evitar que se repita
+        }
+    }, { threshold: 0.5 }); // Se activa cuando el 50% de la sección es visible
+
+    const achievementSection = document.querySelector('.achievements');
+    if (achievementSection) {
+        sectionObserver.observe(achievementSection);
+    }
+
     </script>
 </body>
 </html>

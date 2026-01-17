@@ -488,35 +488,108 @@ footer {
     font-weight: 300;
 }
 
+/* --- SECCIÓN DE LOGROS (ACHIEVEMENTS) --- */
+.achievements {
+    /* Imagen de fondo relacionada con agua/industria */
+    background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    position: relative;
+    color: white;
+    text-align: center;
+}
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+.achievements-overlay {
+    background: rgba(0, 86, 179, 0.9); /* Capa azul corporativa semitransparente */
+    padding: 80px 0;
+    width: 100%;
+    height: 100%;
+}
 
-            .logo { font-size: 1.6rem; }
-            
-            .btn.btn-quote { display: none; }
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
 
-            nav { position: relative; }
-            .nav-links { 
-                display: none; /* Simplificado para demo, usaría JS para toggle */
-                flex-direction: column;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+.achievement-box {
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
 
-            .about-content, .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
+.achievement-box:hover {
+    transform: translateY(-5px); /* Pequeña flotación al hover */
+}
+
+.achievement-box i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #4cd137; /* Verde brillante para resaltar sobre azul */
+    opacity: 0.8;
+}
+
+.counter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.counter {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.achievement-box p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .achievements {
+        background-attachment: scroll; /* Desactiva parallax en móviles para rendimiento */
+    }
+    .counter { font-size: 2.5rem; }
+}
+
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+
+    .logo { font-size: 1.6rem; }
+    
+    .btn.btn-quote { display: none; }
+
+    nav { position: relative; }
+    .nav-links { 
+        display: none; /* Simplificado para demo, usaría JS para toggle */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: block; }
+
+    .about-content, .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 /* 1. Definición de Keyframes (Los movimientos) */
